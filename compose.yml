@@ -7,6 +7,12 @@ services:
             - ./data/redis:/data
         ports:
             - 6379:6379
+        healthcheck:
+            test: ["CMD", "redis-cli", "ping"]
+            interval: 30s
+            retries: 3
+            start_period: 10s
+            timeout: 10s
 
     postgres:
         image: postgres:latest
@@ -20,13 +26,20 @@ services:
             - ./data/postgres:/var/lib/postgresql/data
         ports:
             - 5432:5432
+        healthcheck:
+            test: ["CMD", "pg_isready", "-U", "postgres"]
+            interval: 30s
+            retries: 3
+            start_period: 10s
+            timeout: 10s
 
     vote:
         build: ./vote
         container_name: vote
         restart: on-failure
         depends_on:
-            - redis
+            redis:
+                condition: service_healthy
         ports:
             - 8080:8080
 
@@ -35,7 +48,8 @@ services:
         container_name: result
         restart: on-failure
         depends_on:
-            - postgres
+            postgres:
+                condition: service_healthy
         ports:
             - 8888:8888
 
@@ -44,5 +58,7 @@ services:
         container_name: worker
         restart: on-failure
         depends_on:
-            - redis
-            - postgres
+            redis:
+                condition: service_healthy
+            postgres:
+                condition: service_healthy
