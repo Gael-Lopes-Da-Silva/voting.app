@@ -3,6 +3,8 @@ services:
         image: redis:latest
         container_name: redis_db
         restart: always
+        volumes:
+            - ./data/redis:/data
         ports:
             - 6379:6379
 
@@ -14,12 +16,15 @@ services:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: postgres
             POSTGRES_DB: postgres
+        volumes:
+            - ./data/postgres:/var/lib/postgresql/data
         ports:
             - 5432:5432
 
     vote:
         build: ./vote
         container_name: vote
+        restart: on-failure
         depends_on:
             - redis
         ports:
@@ -28,6 +33,7 @@ services:
     result:
         build: ./result
         container_name: result
+        restart: on-failure
         depends_on:
             - postgres
         ports:
@@ -36,6 +42,7 @@ services:
     worker:
         build: ./worker
         container_name: worker
+        restart: on-failure
         depends_on:
             - redis
             - postgres
