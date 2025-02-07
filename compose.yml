@@ -1,0 +1,41 @@
+services:
+    redis:
+        image: redis:latest
+        container_name: redis_db
+        restart: always
+        ports:
+            - 6379:6379
+
+    postgres:
+        image: postgres:latest
+        container_name: postgres_db
+        restart: always
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_DB: postgres
+        ports:
+            - 5432:5432
+
+    vote:
+        build: ./vote
+        container_name: vote
+        depends_on:
+            - redis
+        ports:
+            - 8080:8080
+
+    result:
+        build: ./result
+        container_name: result
+        depends_on:
+            - postgres
+        ports:
+            - 8888:8888
+
+    worker:
+        build: ./worker
+        container_name: worker
+        depends_on:
+            - redis
+            - postgres
