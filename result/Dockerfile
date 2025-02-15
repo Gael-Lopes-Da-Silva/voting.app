@@ -2,12 +2,10 @@ FROM node:18
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json package-lock.json ./
 
-RUN npm install --omit=dev
+RUN npm install
 
 COPY . .
 
-EXPOSE 8888
-
-CMD ["npm", "run", "start"]
+CMD ["node", "server.js"]
