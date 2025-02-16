@@ -1,5 +1,6 @@
 networks:
     app_network:
+      name: app_network
       driver: bridge
 services:
   redis_db:
@@ -85,4 +86,6 @@ services:
 
 volumes:
   redis_data:
+    name: redis_data
   postgres_data:
+    name: postgres_data
