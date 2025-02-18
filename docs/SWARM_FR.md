@@ -49,7 +49,7 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - app_network
+      - frontend
     environment:
       - REDIS_HOST=redis_db
 
@@ -62,7 +62,7 @@ services:
     ports:
       - "8888:8888"
     networks:
-      - app_network
+      - backend
     environment:
       - POSTGRES_HOST=postgres_db
 
@@ -73,7 +73,8 @@ services:
       restart_policy:
         condition: on-failure
     networks:
-      - app_network
+      - frontend
+      - backend
     environment:
       - REDIS_HOST=redis_db
       - POSTGRES_HOST=postgres_db
@@ -85,7 +86,7 @@ services:
       restart_policy:
         condition: on-failure
     networks:
-      - app_network
+      - frontend
     volumes:
       - redis_data:/data
 
@@ -100,17 +101,23 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
     networks:
-      - app_network
+      - backend
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
 networks:
-  app_network:
+  frontend:
+    name: frontend
+    driver: overlay
+  backend:
+    name: backend
     driver: overlay
 
 volumes:
   redis_data:
+    name: redis_data
   postgres_data:
+    name: postgres_data
 ```
 
 Ce fichier garantit :

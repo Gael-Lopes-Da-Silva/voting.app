@@ -33,3 +33,11 @@ To reset the application and delete the data, do the following:
 After deploying the application, you can access it throught the following urls:
 - [http://localhost:8080](http://localhost:8080) for the voting app.
 - [http://localhost:8888](http://localhost:8888) for the result app.
+
+
+Documentations
+------------------------------------------------------------------
+
+The following is a documentation on how to setup a docker swarm cluster for this app.
+- [Swarm documentation in english](./docs/SWARM_EN.md)
+- [Swarm documentation in french](./docs/SWARM_FR.md)
