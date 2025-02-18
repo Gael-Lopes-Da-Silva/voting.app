@@ -1,6 +1,35 @@
-Dans un terminal, ce placer à la racine du projet (voting.app) et exécutez le script "deploy.bash" qui est dans "run" avec "bash run/deploy.bash".
-Cette commande va générer un script reset.bash dans "run" qui permet de supprimer les conteneurs et toutes les données dans les volumes de Redis et Postgre
+<div align="center">
+	<h1>Voting App</h1>
+    <a href="https://github.com/Gael-Lopes-Da-Silva/voting.app">https://github.com/Gael-Lopes-Da-Silva/voting.app</a>
+</div>
 
-Une fois la commande fini alors 
-- allez sur http://localhost:8080 pour faire un vote. (si on veut tester deux voteur différent alors utilisez deux navigateur différents)
-- allez sur http://localhost:8888 pour voir le résultat. (ça se met à jour directement après un vote)
+
+Description
+------------------------------------------------------------------
+
+A tiny project to vote beetween cats and dog. The project work with two database (postgre and redis). It is mainly a docker learning project.
+
+
+Usage
+------------------------------------------------------------------
+
+To deploy the application, do the following:
+~~~
+git clone https://github.com/Gael-Lopes-Da-Silva/voting.app
+cd voting.app
+./scripts/deploy.sh # Or bash ./scripts/deploy.sh
+~~~
+
+To stop the application without deleting data, do the following:
+~~~
+./scripts/stop.sh # Or bash ./scipts/stop.sh
+~~~
+
+To reset the application and delete the data, do the following:
+~~~
+./scripts/reset.sh # Or bash ./scripts/reset.sh
+~~~
+
+After deploying the application, you can access it throught the following urls:
+- [http://localhost:8080](http://localhost:8080) for the voting app.
+- [http://localhost:8888](http://localhost:8888) for the result app.
