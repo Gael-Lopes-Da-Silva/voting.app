@@ -7,7 +7,7 @@
 Description
 ------------------------------------------------------------------
 
-A tiny project to vote beetween cats and dog. The project work with two database (postgre and redis). It is mainly a docker learning project.
+A tiny project to vote between cats and dog. The project work with two database (postgre and redis). It is mainly a docker learning project.
 
 
 Usage
