@@ -14,19 +14,19 @@ Usage
 ------------------------------------------------------------------
 
 To deploy the application, do the following:
-~~~
+~~~sh
 git clone https://github.com/Gael-Lopes-Da-Silva/voting.app
 cd voting.app
 ./scripts/deploy.sh # Or bash ./scripts/deploy.sh
 ~~~
 
 To stop the application without deleting data, do the following:
-~~~
+~~~sh
 ./scripts/stop.sh # Or bash ./scipts/stop.sh
 ~~~
 
 To reset the application and delete the data, do the following:
-~~~
+~~~sh
 ./scripts/reset.sh # Or bash ./scripts/reset.sh
 ~~~
 
