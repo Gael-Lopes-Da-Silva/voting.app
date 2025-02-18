@@ -7,18 +7,30 @@ Il couvre l’installation du cluster, le déploiement des services et la gestio
 ## 1. Configuration du Cluster Docker Swarm
 
 ### 1.1 Initialisation du Swarm
-Sur le nœud principal (manager), exécute la commande suivante pour initier le cluster : docker swarm init --advertise-addr <IP_MANAGER>
+Sur le nœud principal (manager), exécute la commande suivante pour initier le cluster:
 
-Note : Remplace `<IP_MANAGER>` par l’adresse IP du manager.
+```sh
+docker swarm init --advertise-addr <IP_MANAGER>
+```
+
+Note: Remplace `<IP_MANAGER>` par l’adresse IP du manager.
 
 Cette commande affichera une clé de jonction pour ajouter des nœuds workers au cluster.
 
 ### 1.2 Ajouter des nœuds workers
-Sur chaque nœud worker, exécute : docker swarm join --token <TOKEN> <IP_MANAGER>:2377
+Sur chaque nœud worker, exécute:
 
-Note : Remplace `<TOKEN>` et `<IP_MANAGER>` avec les valeurs affichées lors de l'initialisation.
+```sh
+docker swarm join --token <TOKEN> <IP_MANAGER>:2377
+```
 
-Pour vérifier que les nœuds sont bien ajoutés, exécute sur le manager : docker node ls
+Note: Remplace `<TOKEN>` et `<IP_MANAGER>` avec les valeurs affichées lors de l'initialisation.
+
+Pour vérifier que les nœuds sont bien ajoutés, exécute sur le manager:
+
+```sh
+docker node ls
+```
 
 ## 2. Déploiement de l’Application avec Docker Swarm
 
@@ -28,11 +40,19 @@ Docker Swarm utilise `docker stack deploy` pour orchestrer les services à parti
 Renomme ton fichier `compose.yml` en `docker-stack.yml`, et assure-toi que les services sont bien configurés pour Swarm.
 
 ### 2.2 Lancer l’application avec Docker Stack
-Sur le nœud manager, exécute : docker stack deploy -c docker-stack.yml voting_app
+Sur le nœud manager, exécute:
+
+```sh
+docker stack deploy -c docker-stack.yml voting_app
+```
 
 Cela déploie tous les services définis dans `docker-stack.yml` sur le cluster Swarm.
 
-Pour vérifier le statut des services : docker stack services voting_app
+Pour vérifier le statut des services:
+
+```sh
+docker stack services voting_app
+```
 
 ## 3. Configuration du fichier `docker-stack.yml`
 
@@ -128,19 +148,32 @@ Ce fichier garantit :
 ## 4. Gestion et Monitoring du Cluster
 
 ### 4.1 Vérifier les services en cours
+
+```sh
 docker service ls
+```
 
 ### 4.2 Voir les logs d’un service
+
+```sh
 docker service logs voting_app_vote
+```
 
 ### 4.3 Mise à jour d’un service
-Si tu veux mettre à jour une image sans arrêter le service, utilise : docker service update --image voting-app_vote:latest voting_app_vote
+Si tu veux mettre à jour une image sans arrêter le service, utilise:
+
+```sh
+docker service update --image voting-app_vote:latest voting_app_vote
+```
 
 ### 4.4 Supprimer un stack Swarm
-Pour supprimer complètement l’application du cluster : docker stack rm voting_app
+Pour supprimer complètement l’application du cluster:
+
+```sh
+docker stack rm voting_app
+```
 
 ## Conclusion
 Ce guide t’a montré comment déployer l’application de vote avec Docker Swarm, gérer les nœuds, configurer un fichier `docker-stack.yml`, et surveiller l’état du cluster.
 
 Tu es maintenant prêt à scaler et administrer ton application sur un environnement distribué !
-

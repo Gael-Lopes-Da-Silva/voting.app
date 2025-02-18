@@ -177,4 +177,3 @@ docker stack rm voting_app
 This guide has shown you how to deploy the voting application with Docker Swarm, manage nodes, configure a `docker-stack.yml` file, and monitor the cluster state.
 
 You are now ready to scale and administer your application in a distributed environment!
-
