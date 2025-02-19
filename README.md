@@ -47,5 +47,5 @@ The following is a documentation on how to setup a docker swarm cluster for this
 - [Swarm documentation in french](./docs/SWARM_FR.md)
 
 The following is a documentation on the changes made to the source code.
-- [Swarm documentation in english](./docs/change_code_source_EN.md)
-- [Swarm documentation in french](./docs/change_code_source_FR.md)
+- [Changes log in english](./docs/CHANGELOG_EN.md)
+- [Changes log in french](./docs/CHANGELOG_FR.md)
