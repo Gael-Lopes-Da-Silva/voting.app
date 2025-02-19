@@ -9,7 +9,7 @@ Dans le fichier ./vote/app.py :
 Ligne 19: "localhost" remplacer par "redis_db"
 
 ------------------------------------------------------------------
-Dans le fichier ./result/server.js :
+Dans le fichier ./worker/Program.cs :
 
 Ligne 19: "localhost" remplacer par "postgres_db"
 Ligne 20: "localhost" remplacer par "redis_db"
