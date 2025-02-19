@@ -13,19 +13,23 @@ A tiny project to vote between cats and dog. The project work with two database 
 Usage
 ------------------------------------------------------------------
 
-To deploy the application, do the following:
+To recover the application, do the following:
 ~~~sh
 git clone https://github.com/Gael-Lopes-Da-Silva/voting.app
 cd voting.app
+~~~
+
+To deploy the application, do the following (In a git bash for windows):
+~~~sh
 ./scripts/deploy.sh # Or bash ./scripts/deploy.sh
 ~~~
 
-To stop the application without deleting data, do the following:
+To stop the application without deleting data, do the following (In a git bash for windows):
 ~~~sh
 ./scripts/stop.sh # Or bash ./scipts/stop.sh
 ~~~
 
-To reset the application and delete the data, do the following:
+To reset the application and delete the data, do the following (In a git bash for windows):
 ~~~sh
 ./scripts/reset.sh # Or bash ./scripts/reset.sh
 ~~~
@@ -41,3 +45,7 @@ Documentations
 The following is a documentation on how to setup a docker swarm cluster for this app.
 - [Swarm documentation in english](./docs/SWARM_EN.md)
 - [Swarm documentation in french](./docs/SWARM_FR.md)
+
+The following is a documentation on the changes made to the source code.
+- [Swarm documentation in english](./docs/change_code_source_EN.md)
+- [Swarm documentation in french](./docs/change_code_source_FR.md)
