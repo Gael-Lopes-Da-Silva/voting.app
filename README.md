@@ -26,7 +26,7 @@ To deploy the application, do the following (In a git bash for windows):
 
 To stop the application without deleting data, do the following (In a git bash for windows):
 ~~~sh
-./scripts/stop.sh # Or bash ./scipts/stop.sh
+./scripts/stop.sh # Or bash ./scripts/stop.sh
 ~~~
 
 To reset the application and delete the data, do the following (In a git bash for windows):
